@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task App DevSecOps</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>📝 Task Manager</h1>
+
+<form action="/add" method="post">
+    <input name="content" placeholder="Nouvelle tâche..." required>
+    <button>Ajouter</button>
+</form>
+
+<ul>
+    {% for t in tasks %}
+    <li>
+        <span class="{{ 'done' if t[2] == 1 else '' }}">
+            {{ t[1] }}
+        </span>
+
+        <a href="/toggle/{{ t[0] }}">✔</a>
+        <a href="/delete/{{ t[0] }}">❌</a>
+    </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
